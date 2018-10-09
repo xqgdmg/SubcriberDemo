@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         testSubscribe();
     }
 
+    /*
+     * 订阅者模式测试代码
+     */
     private void testSubscribe() {
         SubscribePublish<String> subscribePublish = new SubscribePublish<String>("订阅器");
         IPublisher<String> publisher1 = new PublisherImpOne<String>("发布者1");
