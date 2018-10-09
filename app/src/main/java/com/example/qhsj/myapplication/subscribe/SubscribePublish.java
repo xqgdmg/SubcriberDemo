@@ -26,12 +26,14 @@ public class SubscribePublish<M> {
      *  接收发布者的消息
      */
     public void publish(String publisher, M message, boolean isInstantMsg) {
-        if (isInstantMsg) {
+        if (isInstantMsg) { // 即时更新消息，不存储 BlockingQueue
             update(publisher, message);
             return;
         }
+
+         // 不是即时消息，存储到 BlockingQueue，如果BlockingQueue容量不足，发送存储队列所有消息
         Msg<M> m = new Msg<M>(publisher, message);
-        if (!queue.offer(m)) {
+        if (!queue.offer(m)) { // offer 如果可以在不违反容量限制的情况下立即执行此操作，则将指定的元素插入此队列，true成功返回 并且false当前没有空间可用。
             update();
         }
     }
@@ -55,7 +57,7 @@ public class SubscribePublish<M> {
      */
     public void update() {
         Msg m = null;
-        while ((m = queue.peek()) != null) {
+        while ((m = queue.peek()) != null) { // peek 取头部数据但不移除此队列的头部，如果此队列为空，则返回null。
             this.update(m.getPublisher(), (M) m.getMsg());
         }
     }

@@ -2,12 +2,16 @@ package com.example.qhsj.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.qhsj.myapplication.subscribe.IPublisher;
 import com.example.qhsj.myapplication.subscribe.ISubcriber;
 import com.example.qhsj.myapplication.subscribe.PublisherImpOne;
 import com.example.qhsj.myapplication.subscribe.SubcriberImpOne;
 import com.example.qhsj.myapplication.subscribe.SubscribePublish;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         // 订阅者模式
-        testSubscribe();
+        TextView textView = (TextView) findViewById(R.id.tv);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 订阅者模式
+                testSubscribe();
+            }
+        });
+
     }
 
     /*
