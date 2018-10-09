@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * 订阅者模式测试代码，测试提交
+     * 订阅者模式测试代码
      */
     private void testSubscribe() {
         SubscribePublish<String> subscribePublish = new SubscribePublish<String>("订阅器");
