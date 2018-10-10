@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
  * 订阅器类
  */
 public class SubscribePublish<M> {
-    //订阅器名称
+    //订阅器名称，无特殊的意义
     private String name;
     //订阅器队列容量
     final int QUEUE_CAPACITY = 20;

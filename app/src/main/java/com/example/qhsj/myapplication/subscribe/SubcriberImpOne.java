@@ -6,6 +6,7 @@ import android.util.Log;
  * 订阅者实现类
  */
 public class SubcriberImpOne<M> implements ISubcriber<M> {
+    // 这个name是故意取来命名订阅者的，没有特殊的意义
     public String name;
 
     public SubcriberImpOne(String name) {
